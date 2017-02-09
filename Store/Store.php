@@ -12,8 +12,8 @@
 	{
 		private $name;
 		private $address;
-		private $max_capacity=50;
-		private $actual_capacity=0;
+		private $maxCapacity=50;
+		private $actualCapacity=0;
 		private  $itemList= array();
 
 		/**
@@ -60,7 +60,7 @@
 		 */
 		public function getMaxCapacity()
 		{
-			return $this->max_capacity;
+			return $this->maxCapacity;
 		}
 
 		/**
@@ -94,7 +94,7 @@
 			$amount = $listItem->getAmount();
 			$actualItem = $listItem->getItem();
 			$itemExist =false;
-			if($amount + $this->actual_capacity <= $this->max_capacity) {
+			if($amount + $this->actualCapacity <= $this->maxCapacity) {
 				foreach ($this->itemList as $key => $item) {
 					$product = $item->getItem();
 					$productAmount = $item->getAmount();
@@ -107,7 +107,7 @@
 				if (!$itemExist) {
 					array_push($this->itemList,$listItem);
 				}
-				$this->actual_capacity = $this->actual_capacity+$amount;
+				$this->actualCapacity = $this->actualCapacity+$amount;
 			}
 			else {
 				throw new \Exception('Unable to add the store. Error: actual capacity plus item amount, greater then max capacity ');
@@ -123,7 +123,7 @@
 			$hasAmount = true;
 			$actualAmount=0;
 
-			if( $this->actual_capacity-$amount >= 0) {
+			if( $this->actualCapacity-$amount >= 0) {
 
 				foreach ($this->itemList as $key => $item) {
 					$product = $item->getItem();
@@ -143,7 +143,7 @@
 							else {
 								$item->setAmount($productAmount - $amount);
 
-								$this->actual_capacity = $this->actual_capacity - $amount;
+								$this->actualCapacity = $this->actualCapacity - $amount;
 							}
 						}
 					}
