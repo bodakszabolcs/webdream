@@ -31,7 +31,7 @@
 
 		function __toString()
 		{
-			$tmpString=$this->name.", ".$this->address.'. Kapacitás:'.$this->max_capacity."\r\n"."Készlet:"."\r\n";
+			$tmpString=$this->name.", ".$this->address.'. Kapacitás:'.$this->maxCapacity."\r\n"."Készlet:"."\r\n";
 			foreach ($this->itemList as $item)
 			{
 				$tmpString.=$item."\r\n";
